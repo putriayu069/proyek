@@ -27,18 +27,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'apiLogout'])->name('api.logout');
 
     // ================== CART ==================
-    Route::prefix('cart')->group(function () {
-        Route::get('/', [CartController::class, 'index'])->name('api.cart.index');
-        Route::post('/add', [CartController::class, 'store'])->name('api.cart.add');
-        Route::put('/update/{id}', [CartController::class, 'update'])->name('api.cart.update');
-        Route::delete('/remove/{id}', [CartController::class, 'destroy'])->name('api.cart.remove');
-        Route::delete('/clear', [CartController::class, 'clear'])->name('api.cart.clear'); // ✅ tambahan
-    });
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/add', [CartController::class, 'store']); // ✅ ROUTE INI PENTING
+    Route::put('/cart/{id}', [CartController::class, 'update']);
+    Route::delete('/cart/{id}', [CartController::class, 'destroy']);
+    Route::delete('/cart/clear', [CartController::class, 'clear']);
+
 
     // ================== PROFILE ==================
     Route::get('/profile', [ProfileController::class, 'show'])->name('api.profile.show');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('api.profile.update');
-
+    
     // ================== CHECKOUT & PAYMENT ==================
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('api.checkout.store');
     Route::get('/checkout/history', [CheckoutController::class, 'history'])->name('api.checkout.history');
@@ -54,4 +53,6 @@ Route::fallback(function () {
     return response()->json([
         'message' => 'Endpoint tidak ditemukan. Periksa URL API Anda.',
     ], 404);
+
+    
 });

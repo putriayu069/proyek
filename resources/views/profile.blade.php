@@ -83,32 +83,41 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.jpg') }}" alt="E-Mebel Logo" height="40">
+    <nav class="navbar navbar-expand-lg navbar-custom px-4">
+    <div class="container">
+         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+            <img src="{{ asset('images/logo.jpg') }}" 
+                 alt="E-Mebel Logo" 
+                 style="height: 45px;" 
+                 class="me-2">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto"> <!-- Pindahkan ke tengah dengan mx-auto -->
-            <li class="nav-item"><a class="nav-link" href="{{ url('dashboard') }}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('riwayat.pesanan') }}">Riwayat Pesanan</a></li>
-        </ul>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url('dashboard') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('riwayat.pesanan') }}">Riwayat Pesanan</a></li>
+            </ul>
+
             <a class="nav-link" href="{{ route('keranjang') }}">
                 <img src="{{ asset('images/keranjang.png') }}" alt="Keranjang" style="width: 37px; height: 23px;">
             </a>
+
             @auth
-            <form method="GET" action="{{ route('logout') }}" class="ms-2">
-                @csrf
-                <button type="submit" class="btn btn-link nav-link p-0" style="border: none; background: none;">
-                    <img src="{{ asset('images/logout.png') }}" alt="Logout" style="width: 20px; height: 20px;">
-                </button>
-            </form>
+            <a href="{{ route('logout') }}" 
+               class="nav-link d-flex align-items-center ms-2" 
+               title="Logout">
+                <img src="{{ asset('images/logout.png') }}" 
+                     alt="Logout" 
+                     style="width: 20px; height: 20px;">
+            </a>
             @endauth
         </div>
-    </nav>
+    </div>
+</nav>
 
     <div class="profile px-4 py-5">
         <div class="header-bar">Update Profil</div>

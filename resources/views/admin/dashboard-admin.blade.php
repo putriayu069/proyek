@@ -359,8 +359,130 @@
     </table>
 </div>
 
+<!-- Tambah Promo -->
+<div class="bg-white rounded-lg p-6 shadow-sm mt-6">
+    <h2 class="text-lg font-semibold mb-4">Tambah Promo</h2>
 
+    <!-- Pesan sukses -->
+    @if(session('success'))
+        <div class="p-2 mb-3 bg-green-100 text-green-700 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
 
+    <!-- Error -->
+    @if ($errors->any())
+        <div class="p-2 mb-3 bg-red-100 text-red-700 rounded">
+            <ul class="list-disc list-inside mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('admin.promo.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @csrf
+
+        <!-- Kode Promo -->
+        <div>
+            <label for="kode" class="block text-sm font-medium mb-1">Kode Promo</label>
+            <input type="text" name="kode" id="kode" placeholder="Masukkan kode promo" 
+                   class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-primary focus:outline-none"
+                   value="{{ old('kode') }}" required>
+        </div>
+
+        <!-- Diskon Persen -->
+        <div>
+            <label for="percent" class="block text-sm font-medium mb-1">Diskon Persen (%)</label>
+            <input type="number" name="percent" id="percent" placeholder="Opsional" 
+                   class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-primary focus:outline-none"
+                   value="{{ old('percent') }}" min="0" max="100">
+        </div>
+
+        <!-- Diskon Nominal -->
+        <div>
+            <label for="amount" class="block text-sm font-medium mb-1">Diskon Nominal (Rp)</label>
+            <input type="number" name="amount" id="amount" placeholder="Opsional" 
+                   class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-primary focus:outline-none"
+                   value="{{ old('amount') }}" min="0">
+        </div>
+
+        <!-- Tanggal Kadaluarsa -->
+        <div>
+            <label for="expired_at" class="block text-sm font-medium mb-1">Tanggal Kadaluarsa</label>
+            <input type="date" name="expired_at" id="expired_at" 
+                   class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-primary focus:outline-none"
+                   value="{{ old('expired_at') }}">
+        </div>
+
+        <!-- Tombol Submit -->
+        <div class="md:col-span-2 flex justify-end">
+            <button type="submit" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90">
+                Simpan Promo
+            </button>
+        </div>
+    </form>
+</div>
+<!-- Daftar Promo -->
+<div class="bg-white rounded-lg p-4 md:p-6 shadow-sm mt-6">
+    <h2 class="text-lg font-semibold mb-4">Daftar Promo</h2>
+
+    @if(session('success'))
+        <div class="p-2 mb-3 bg-green-100 text-green-700 rounded">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <table class="w-full border-collapse">
+        <thead>
+            <tr class="bg-gray-100 text-left">
+                <th class="p-2 border">Kode Promo</th>
+                <th class="p-2 border">Diskon Persen (%)</th>
+                <th class="p-2 border">Diskon Nominal (Rp)</th>
+                <th class="p-2 border">Tanggal Kadaluarsa</th>
+                <th class="p-2 border">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($promos as $promo)
+            <tr>
+                <td class="p-2 border font-semibold">{{ $promo->kode }}</td>
+                <td class="p-2 border">
+                    @if($promo->percent)
+                        {{ $promo->percent }}%
+                    @else
+                        <span class="text-gray-400 text-sm">-</span>
+                    @endif
+                </td>
+                <td class="p-2 border">
+                    @if($promo->amount)
+                        Rp{{ number_format($promo->amount, 0, ',', '.') }}
+                    @else
+                        <span class="text-gray-400 text-sm">-</span>
+                    @endif
+                </td>
+                <td class="p-2 border">
+                    @if($promo->expired_at)
+                        {{ \Carbon\Carbon::parse($promo->expired_at)->format('d M Y') }}
+                    @else
+                        <span class="text-gray-400 text-sm">Tidak ditentukan</span>
+                    @endif
+                </td>
+                <td class="p-2 border">
+                    <form action="{{ route('admin.promo.destroy', $promo->id) }}" method="POST" 
+                          class="inline-block"
+                          onsubmit="return confirm('Yakin ingin menghapus promo ini?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="px-3 py-1 bg-red-600 text-white rounded">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
         <!-- Charts Section -->
         <div class="bg-white rounded-lg p-4 md:p-6 shadow-sm w-full">
           <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js?v=1"></script>

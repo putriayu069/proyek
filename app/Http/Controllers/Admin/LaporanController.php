@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Http\Request;
 use App\Models\Barang;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
