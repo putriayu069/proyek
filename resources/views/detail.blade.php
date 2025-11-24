@@ -64,6 +64,11 @@
 {{-- Product Detail --}}
 <section class="product-wrapper py-5">
     <div class="container">
+        @if(session('error'))
+            <div class="alert alert-danger animate__animated animate__flash mb-4">
+                <strong>Peringatan Debug:</strong> {{ session('error') }}
+            </div>
+        @endif
         <div class="row align-items-center animate__animated animate__fadeIn">
 
             @php
@@ -138,6 +143,7 @@
                         <i class="bi bi-chat-dots"></i> Chat
                     </a>
                 </div>
+
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\OngkirController;
 
 // ========================================================
 // 🔓 PUBLIC ROUTES (TIDAK PERLU LOGIN)
@@ -37,6 +38,11 @@ Route::middleware('auth:sanctum')->group(function () {
     // ================== PROFILE ==================
     Route::get('/profile', [ProfileController::class, 'show'])->name('api.profile.show');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('api.profile.update');
+    //==================ongkir=======================
+    Route::get('/provinces', [OngkirController::class, 'getProvinces']);
+     Route::get('/cities/{province_id}', [OngkirController::class, 'getCities']);
+     Route::post('/ongkir/cost', [OngkirController::class, 'getCost']);
+
     
     // ================== CHECKOUT & PAYMENT ==================
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('api.checkout.store');
@@ -54,5 +60,10 @@ Route::fallback(function () {
         'message' => 'Endpoint tidak ditemukan. Periksa URL API Anda.',
     ], 404);
 
+
     
 });
+
+
+
+     

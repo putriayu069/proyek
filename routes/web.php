@@ -20,6 +20,14 @@ use App\Http\Controllers\Admin\ChatController as AdminChatController;
 use App\Http\Controllers\PaymentController;
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
+
+
 // ===========================
 // HALAMAN UTAMA
 // ===========================
@@ -138,6 +146,7 @@ Route::post('/index', [PembayaranController::class, 'index'])
 // ===========================
 Route::post('/payment/midtrans-callback', [PaymentController::class, 'midtransCallback']);
 
+
 // Pelanggan
 
 // routes/web.php
@@ -152,3 +161,13 @@ Route::post('/admin/promo/store', [DashboardAdminController::class, 'promoStore'
 // Tambahkan route ini di bagian keranjang
 Route::post('/keranjang/remove-promo', [KeranjangController::class, 'removePromo'])->name('keranjang.removePromo');
 Route::delete('admin/promo/{promo}', [DashboardAdminController::class, 'promoDestroy'])->name('admin.promo.destroy');
+
+
+
+
+
+// Endpoint untuk membuat Snap token dinamis dengan ongkir dan total
+Route::post('/create-snap-token', [PembayaranController::class, 'createSnapToken'])->name('create.snap');
+
+
+
