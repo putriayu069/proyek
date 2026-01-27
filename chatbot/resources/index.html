@@ -1,16 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emebel Laravel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auréa Skin</title>
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#E8A0BF',
+        secondary: '#BA6E9E'
+      },
+      borderRadius: {
+        button: '8px'
+      }
+    }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<style>
+html { scroll-behavior: smooth; }
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #E8A0BF;
+  left: 0;
+  bottom: -4px;
+  transition: .3s;
+}
+.nav-link:hover::after { width: 100%; }
+</style>
 </head>
-<body>
-    <div id="app">
-        <h1>Welcome to Emebel</h1>
-        <p>Your furniture e-commerce website</p>
+
+<body class="bg-white text-gray-800">
+
+<!-- ================= HEADER ================= -->
+<header class="flex justify-between items-center px-6 md:px-12 py-4 shadow-sm sticky top-0 bg-white z-50">
+  <a href="#" class="text-3xl font-['Pacifico'] text-primary">Auréa Skin</a>
+  <nav class="hidden md:flex space-x-8">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#benefit" class="nav-link">Benefit</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+  <a href="dashboard.html" class="hidden md:block bg-primary text-white px-6 py-2 rounded-button hover:bg-secondary transition">
+    Shop Now
+  </a>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="bg-primary/10 px-6 md:px-12 py-24 flex flex-col md:flex-row items-center">
+  <div class="md:w-1/2 mb-12">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      Kulit Sehat & <span class="text-primary">Glowing</span><br>
+      Bersama Auréa Skin
+    </h1>
+    <p class="text-lg text-gray-600 mb-8">
+      Auréa Skin menghadirkan rangkaian produk perawatan kulit
+      yang aman, berkualitas, dan teruji untuk kulit Indonesia.
+    </p>
+    <div class="flex gap-4">
+      <a href="dashboard.html" class="bg-primary text-white px-8 py-3 rounded-button text-lg hover:bg-secondary transition">
+        Mulai Sekarang
+      </a>
+      <a href="#benefit" class="border border-primary text-primary px-8 py-3 rounded-button text-lg hover:bg-primary hover:text-white transition">
+        Lihat Manfaat
+      </a>
+    </div>
+  </div>
+
+  <div class="md:w-1/2">
+    <img src="images/skincare-hero.jpg" alt="Auréa Skin Product" class="rounded-3xl shadow-xl">
+  </div>
+</section>
+
+<!-- ================= BENEFIT ================= -->
+<section id="benefit" class="px-6 md:px-12 py-20 bg-gray-50">
+  <h2 class="text-4xl font-bold text-center mb-6">
+    Mengapa Pilih <span class="text-primary">Auréa Skin?</span>
+  </h2>
+  <p class="text-center text-gray-600 mb-14 max-w-2xl mx-auto">
+    Kami berkomitmen memberikan perawatan terbaik
+    untuk membantu kulitmu tampil sehat dan bercahaya.
+  </p>
+
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+    <div class="bg-white p-8 rounded-2xl shadow">
+      <i class="ri-shield-check-line text-4xl text-primary mb-3"></i>
+      <p>Terdaftar BPOM</p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow">
+      <i class="ri-leaf-line text-4xl text-primary mb-3"></i>
+      <p>Bahan Alami Pilihan</p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow">
+      <i class="ri-star-smile-line text-4xl text-primary mb-3"></i>
+      <p>Hasil Nyata</p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow">
+      <i class="ri-customer-service-2-line text-4xl text-primary mb-3"></i>
+      <p>Konsultasi Gratis</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONI ================= -->
+<section class="px-6 md:px-12 py-20 bg-white">
+  <h2 class="text-4xl font-bold text-center mb-14">
+    Apa Kata Mereka tentang <span class="text-primary">Auréa Skin</span>
+  </h2>
+
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="bg-gray-50 p-8 rounded-2xl shadow">
+      <p class="italic mb-4">
+        “Setelah rutin pakai Auréa Skin, kulitku jauh lebih glowing.”
+      </p>
+      <h4 class="font-semibold">— Rina, Bandung</h4>
     </div>
 
-    <script type="module" src="/js/app.js"></script>
+    <div class="bg-gray-50 p-8 rounded-2xl shadow">
+      <p class="italic mb-4">
+        “Teksturnya ringan dan cocok buat kulit sensitif.”
+      </p>
+      <h4 class="font-semibold">— Aisyah, Jakarta</h4>
+    </div>
+
+    <div class="bg-gray-50 p-8 rounded-2xl shadow">
+      <p class="italic mb-4">
+        “Brand lokal rasa premium. Love it!”
+      </p>
+      <h4 class="font-semibold">— Nabila, Surabaya</h4>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="px-6 md:px-12 py-24 bg-primary text-white text-center">
+  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+    Konsultasi Gratis 💬
+  </h2>
+  <p class="text-lg mb-10 max-w-2xl mx-auto">
+    Tim Auréa Skin siap membantu kamu memilih
+    produk skincare terbaik melalui WhatsApp.
+  </p>
+
+  <a href="https://wa.me/6281311394644" target="_blank"
+     class="bg-white text-primary px-12 py-4 rounded-button text-lg font-semibold hover:bg-gray-100 transition inline-flex items-center gap-3">
+    <i class="ri-whatsapp-line text-2xl"></i>
+    Chat WhatsApp
+  </a>
+
+  <p class="mt-6 text-sm opacity-90">
+    Admin Online | 08.00 – 21.00 WIB
+  </p>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact" class="bg-gray-900 text-gray-300 px-6 md:px-12 py-12">
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div>
+      <h3 class="font-['Pacifico'] text-3xl text-primary mb-4">Auréa Skin</h3>
+      <p>Rahasia kulit sehat dan bercahaya.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3">Kontak</h4>
+      <p>Email: aureaskin.shop@gmail.com</p>
+      <p>Telp: +62 812-3456-7890</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-3">Sosial Media</h4>
+      <div class="flex gap-4 text-xl">
+        <i class="ri-instagram-line"></i>
+        <i class="ri-facebook-line"></i>
+        <i class="ri-twitter-line"></i>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-center text-sm text-gray-500 mt-10">
+    © 2025 Auréa Skin. All Rights Reserved.
+  </p>
+</footer>
+
 </body>
 </html>

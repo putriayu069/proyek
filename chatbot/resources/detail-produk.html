@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detail Produk | Auréa Skin</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#E8A0BF;
+  --bg:#fff5f8;
+}
+
+body{
+  background:var(--bg);
+  font-family:'Poppins',sans-serif;
+}
+
+.card{
+  border-radius:20px;
+}
+
+.product-img{
+  height:300px;
+  object-fit:contain;
+  padding:20px;
+  background:#fff;
+}
+
+.btn-primary{
+  background:var(--primary);
+  border:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar bg-white shadow-sm mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="dashboard.html" style="color:#E8A0BF">
+      Auréa Skin
+    </a>
+  </div>
+</nav>
+
+<!-- DETAIL -->
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow-sm p-4">
+        <div class="row align-items-center">
+
+          <div class="col-md-5 text-center">
+            <img id="productImage" class="product-img w-100">
+          </div>
+
+          <div class="col-md-7">
+            <h3 id="productName"></h3>
+            <p class="text-muted mt-2" id="productDesc"></p>
+
+            <h5 class="fw-bold mt-3" id="productPrice"></h5>
+            <p class="small text-muted">
+              Stok tersedia: <span id="productStock"></span>
+            </p>
+
+            <div class="mt-4">
+              <button class="btn btn-primary px-4"
+                      onclick="addToCart()">
+                Tambah ke Keranjang
+              </button>
+              <a href="dashboard.html" class="btn btn-outline-secondary ms-2">
+                Kembali
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* DATABASE PRODUK */
+const products = {
+  cleanser: {
+    name: "Facial Cleanser Glow",
+    desc: "Facial cleanser dengan formula lembut untuk membersihkan wajah secara menyeluruh tanpa membuat kulit kering.",
+    price: "Rp 60.000",
+    stock: 25,
+    image: "images/produk1.png"
+  },
+  toner: {
+    name: "Hydrating Toner",
+    desc: "Toner yang membantu menghidrasi kulit, menenangkan wajah, dan menyeimbangkan pH kulit.",
+    price: "Rp 85.000",
+    stock: 20,
+    image: "images/produk2.png"
+  },
+  serum: {
+    name: "Brightening Serum",
+    desc: "Serum pencerah dengan kandungan aktif untuk membantu menyamarkan noda hitam dan meratakan warna kulit.",
+    price: "Rp 102.000",
+    stock: 15,
+    image: "images/produk3.png"
+  },
+  moisturizer: {
+    name: "Moisturizer Cream",
+    desc: "Krim pelembap yang membantu menjaga kelembapan kulit sepanjang hari dan membuat kulit terasa halus.",
+    price: "Rp 150.000",
+    stock: 10,
+    image: "images/produk4.png"
+  }
+};
+
+/* AMBIL PARAMETER URL */
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
+
+/* TAMPILKAN DATA */
+const product = products[productId];
+
+document.getElementById("productName").innerText = product.name;
+document.getElementById("productDesc").innerText = product.desc;
+document.getElementById("productPrice").innerText = product.price;
+document.getElementById("productStock").innerText = product.stock;
+document.getElementById("productImage").src = product.image;
+
+/* ADD TO CART */
+function addToCart(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Produk berhasil ditambahkan ke keranjang 🛒");
+}
+</script>
+
+</body>
+</html>
