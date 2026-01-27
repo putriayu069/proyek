@@ -10,11 +10,9 @@
     "prod": "vite build"
   },
   "devDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.9.0",
     "@tailwindcss/vite": "^4.0.0",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.0.1",
-    "laravel-vite-plugin": "^1.2.0",
     "postcss": "^8.5.6",
     "sass": "^1.85.1",
     "sass-loader": "^16.0.5",
