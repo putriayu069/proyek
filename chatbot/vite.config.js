@@ -10,9 +10,9 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'resources/index.html'),
-                about: resolve(__dirname, 'resources/about.html'),
-                products: resolve(__dirname, 'resources/products.html'),
-                contact: resolve(__dirname, 'resources/contact.html'),
+                about: resolve(__dirname, 'resources/dashboard.html'),
+                products: resolve(__dirname, 'resources/tentangbrand.html'),
+                contact: resolve(__dirname, 'resources/detail.produk.html'),
             },
         },
     },
