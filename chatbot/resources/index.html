@@ -24,174 +24,510 @@ tailwind.config = {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <style>
 html { scroll-behavior: smooth; }
-.nav-link { position: relative; }
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  transition: color .3s;
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
   width: 0;
   height: 2px;
   background: #E8A0BF;
-  left: 0;
-  bottom: -4px;
-  transition: .3s;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  transition: width .3s;
 }
-.nav-link:hover::after { width: 100%; }
+
+.nav-link:hover {
+  color: #E8A0BF;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #E8A0BF;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
 </style>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 font-['Poppins']">
 
 <!-- ================= HEADER ================= -->
-<header class="flex justify-between items-center px-6 md:px-12 py-4 shadow-sm sticky top-0 bg-white z-50">
-  <a href="#" class="text-3xl font-['Pacifico'] text-primary">Auréa Skin</a>
-  <nav class="hidden md:flex space-x-8">
-    <a href="#home" class="nav-link">Home</a>
-    <a href="#benefit" class="nav-link">Benefit</a>
-    <a href="#contact" class="nav-link">Contact</a>
-  </nav>
-  <a href="dashboard.html" class="hidden md:block bg-primary text-white px-6 py-2 rounded-button hover:bg-secondary transition">
-    Shop Now
-  </a>
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 py-4
+              flex items-center justify-between relative">
+
+    <!-- LOGO (KIRI) -->
+    <a href="#home" class="text-3xl font-['Pacifico'] text-primary">
+      Auréa Skin
+    </a>
+
+    <!-- NAVIGASI (TENGAH) -->
+    <nav class="hidden md:flex space-x-10 absolute left-1/2 transform -translate-x-1/2">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#benefit" class="nav-link">Benefit</a>
+      <a href="#about" class="nav-link">Tentang</a>
+      <a href="#market" class="nav-link">Target Market</a>
+      <a href="#produk" class="nav-link">Produk</a>
+    </nav>
+
+    <!-- CTA KANAN -->
+    <a href="#contact"
+       class="hidden md:inline-block bg-primary text-white px-6 py-2 rounded-button
+              hover:bg-secondary transition shadow-sm">
+      Konsultasi
+    </a>
+
+  </div>
 </header>
 
-<!-- ================= HERO ================= -->
+
+
+<!-- ================= BENEFIT (TETAP) ================= -->
 <section id="home" class="bg-primary/10 px-6 md:px-12 py-24 flex flex-col md:flex-row items-center">
   <div class="md:w-1/2 mb-12">
     <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
       Kulit Sehat & <span class="text-primary">Glowing</span><br>
       Bersama Auréa Skin
     </h1>
-    <p class="text-lg text-gray-600 mb-8">
+    <p class="text-lg text-gray-600">
       Auréa Skin menghadirkan rangkaian produk perawatan kulit
-      yang aman, berkualitas, dan teruji untuk kulit Indonesia.
+      yang aman, berkualitas, dan teruji untuk mendukung
+      kepercayaan diri generasi muda.
     </p>
-    <div class="flex gap-4">
-      <a href="dashboard.html" class="bg-primary text-white px-8 py-3 rounded-button text-lg hover:bg-secondary transition">
-        Mulai Sekarang
-      </a>
-      <a href="#benefit" class="border border-primary text-primary px-8 py-3 rounded-button text-lg hover:bg-primary hover:text-white transition">
-        Lihat Manfaat
-      </a>
-    </div>
   </div>
 
   <div class="md:w-1/2">
-    <img src="images/skincare-hero.jpg" alt="Auréa Skin Product" class="rounded-3xl shadow-xl">
+    <img src="images/gambarbrand.png" class="rounded-3xl shadow-xl">
   </div>
 </section>
 
-<!-- ================= BENEFIT ================= -->
-<section id="benefit" class="px-6 md:px-12 py-20 bg-gray-50">
+
+<!-- ================= MENGAPA PILIH ================= -->
+<section id="benefit" class="px-6 md:px-12 py-24 bg-gray-50">
   <h2 class="text-4xl font-bold text-center mb-6">
     Mengapa Pilih <span class="text-primary">Auréa Skin?</span>
   </h2>
-  <p class="text-center text-gray-600 mb-14 max-w-2xl mx-auto">
-    Kami berkomitmen memberikan perawatan terbaik
-    untuk membantu kulitmu tampil sehat dan bercahaya.
+
+  <p class="text-center text-gray-600 max-w-3xl mx-auto mb-14 text-lg">
+    Kami percaya bahwa setiap orang berhak memiliki kulit sehat tanpa rasa khawatir.
+    Oleh karena itu, Auréa Skin hadir dengan komitmen kuat terhadap kualitas,
+    keamanan, dan kenyamanan penggunaan.
   </p>
 
   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
     <div class="bg-white p-8 rounded-2xl shadow">
-      <i class="ri-shield-check-line text-4xl text-primary mb-3"></i>
-      <p>Terdaftar BPOM</p>
+      <i class="ri-shield-check-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Aman & Terdaftar BPOM</h4>
+      <p class="text-sm text-gray-600">
+        Seluruh produk Auréa Skin telah melalui uji keamanan
+        dan terdaftar resmi di BPOM.
+      </p>
     </div>
+
     <div class="bg-white p-8 rounded-2xl shadow">
-      <i class="ri-leaf-line text-4xl text-primary mb-3"></i>
-      <p>Bahan Alami Pilihan</p>
+      <i class="ri-leaf-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Bahan Alami Berkualitas</h4>
+      <p class="text-sm text-gray-600">
+        Diformulasikan dengan bahan alami pilihan
+        yang lembut untuk kulit Indonesia.
+      </p>
     </div>
+
     <div class="bg-white p-8 rounded-2xl shadow">
-      <i class="ri-star-smile-line text-4xl text-primary mb-3"></i>
-      <p>Hasil Nyata</p>
+      <i class="ri-star-smile-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Hasil Nyata</h4>
+      <p class="text-sm text-gray-600">
+        Dirancang untuk memberikan hasil yang terlihat
+        dengan pemakaian rutin.
+      </p>
     </div>
+
     <div class="bg-white p-8 rounded-2xl shadow">
-      <i class="ri-customer-service-2-line text-4xl text-primary mb-3"></i>
-      <p>Konsultasi Gratis</p>
+      <i class="ri-customer-service-2-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Didampingi Ahli</h4>
+      <p class="text-sm text-gray-600">
+        Konsultasi gratis untuk membantu kamu
+        memilih produk yang tepat.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ================= TESTIMONI ================= -->
-<section class="px-6 md:px-12 py-20 bg-white">
+<!-- ================= TENTANG BRAND ================= -->
+<section id="about" class="px-6 md:px-12 py-24 bg-white">
+  <h2 class="text-4xl font-bold text-center mb-6">
+    Tentang <span class="text-primary">Auréa Skin</span>
+  </h2>
+
+  <p class="max-w-4xl mx-auto text-center text-lg text-gray-600 mb-10">
+    Auréa Skin didirikan pada tahun 2024 dengan tujuan
+    membantu lebih banyak orang merasa percaya diri melalui
+    perawatan kulit yang tepat, aman, dan nyaman digunakan.
+  </p>
+
+  <p class="max-w-4xl mx-auto text-center text-lg text-gray-600">
+    Nama Auréa terinspirasi dari kata <em>aureus</em>
+    yang berarti emas melambangkan nilai,
+    kualitas, dan keindahan kulit yang sehat serta bercahaya.
+    Kami percaya bahwa skincare bukan hanya tentang penampilan,
+    tetapi juga tentang rasa percaya diri dan self-care.
+  </p>
+</section>
+<!-- ================= TARGET MARKET ================= -->
+<section id="market" class="px-6 md:px-12 py-24 bg-gray-50">
+  <h2 class="text-4xl font-bold text-center mb-12">
+    Auréa Skin Cocok Untuk Kamu ✨
+  </h2>
+
+  <p class="max-w-4xl mx-auto text-center text-lg text-gray-600 mb-14">
+    Auréa Skin diformulasikan untuk wanita dan pria mulai dari usia 15 tahun
+    yang mulai membangun kebiasaan merawat kulit dengan cara yang aman dan sederhana.
+  </p>
+
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+
+    <!-- CARD 1 -->
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+      <i class="ri-user-smile-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Remaja & Dewasa Awal</h4>
+      <p class="text-sm text-gray-600">
+        Cocok untuk pelajar dan mahasiswa awal.
+      </p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+      <i class="ri-sparkling-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Ingin Kulit Bersih & Segar</h4>
+      <p class="text-sm text-gray-600">
+        Mendukung penampilan sehari-hari.
+      </p>
+    </div>
+
+    <!-- CARD 3 (FIXED – SEKARANG ADA ICON) -->
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+      <i class="ri-layout-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Suka yang Simple</h4>
+      <p class="text-sm text-gray-600">
+        Skincare praktis & mudah dipakai.
+      </p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+      <i class="ri-heart-3-line text-4xl text-primary mb-4"></i>
+      <h4 class="font-semibold mb-2">Butuh Produk Aman</h4>
+      <p class="text-sm text-gray-600">
+        Ringan & nyaman untuk pemula.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PRODUK (BARU) ================= -->
+<section id="produk" class="px-6 md:px-12 py-24 bg-gray-50">
   <h2 class="text-4xl font-bold text-center mb-14">
-    Apa Kata Mereka tentang <span class="text-primary">Auréa Skin</span>
+    Produk <span class="text-primary">Auréa Skin</span>
+  </h2>
+
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+
+    <div class="bg-white p-6 rounded-2xl shadow text-center">
+      <img src="images/produk1.png" class="h-48 mx-auto object-contain mb-4">
+      <h4 class="font-semibold">Facial Cleanser Glow</h4>
+      <p class="text-sm text-gray-500 mb-2">Membersihkan & mencerahkan</p>
+      <button onclick="openDetail(
+        'Facial Cleanser Glow',
+        'Rp 60.000',
+        'Facial Cleanser Glow dari Auréa Skin diformulasikan untuk membersihkan wajah secara menyeluruh tanpa membuat kulit terasa kering. Teksturnya lembut dan busanya halus, efektif mengangkat kotoran, minyak berlebih, serta sisa makeup.',
+        'images/produk1.png'
+      )" class="text-primary font-medium">
+        Lihat Detail
+      </button>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow text-center">
+      <img src="images/produk2.png" class="h-48 mx-auto object-contain mb-4">
+      <h4 class="font-semibold">Hydrating Toner</h4>
+      <p class="text-sm text-gray-500 mb-2">Melembapkan & menenangkan</p>
+      <button onclick="openDetail(
+        'Hydrating Toner',
+        'Rp 85.000',
+        'Hydrating Toner membantu mengembalikan kelembapan kulit setelah mencuci wajah sekaligus menenangkan kulit yang terasa kering atau lelah. Teksturnya ringan, cepat meresap, dan tidak lengket.',
+        'images/produk2.png'
+      )" class="text-primary font-medium">
+        Lihat Detail
+      </button>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow text-center">
+      <img src="images/produk3.png" class="h-48 mx-auto object-contain mb-4">
+      <h4 class="font-semibold">Brightening Serum</h4>
+      <p class="text-sm text-gray-500 mb-2">Mencerahkan kulit</p>
+      <button onclick="openDetail(
+        'Brightening Serum',
+        'Rp 102.000',
+        'Brightening Serum diformulasikan dengan bahan aktif yang membantu mencerahkan kulit dan meratakan warna kulit. Teksturnya ringan dan mudah menyerap, memberikan hasil kulit tampak lebih glowing dan sehat.',
+        'images/produk3.png'
+      )" class="text-primary font-medium">
+        Lihat Detail
+      </button>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow text-center">
+      <img src="images/produk4.png" class="h-48 mx-auto object-contain mb-4">
+      <h4 class="font-semibold">Moisturizer Cream</h4>
+      <p class="text-sm text-gray-500 mb-2">Melembapkan maksimal</p>
+      <button onclick="openDetail(
+        'Moisturizer Cream',
+        'Rp 150.000',
+        'Moisturizer Glow memberikan kelembapan intens yang tahan lama sekaligus menjaga skin barrier. Teksturnya lembut, mudah diratakan, dan nyaman digunakan siang maupun malam hari.',
+        'images/produk4.png'
+      )" class="text-primary font-medium">
+        Lihat Detail
+      </button>
+    </div>
+
+  </div>
+</section>
+<!-- ================= TESTIMONI ================= -->
+<section class="px-6 md:px-12 py-24 bg-white">
+  <h2 class="text-4xl font-bold text-center mb-12">
+    Apa Kata Mereka tentang <span class="text-primary">Auréa Skin</span>?
   </h2>
 
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
-      <p class="italic mb-4">
-        “Setelah rutin pakai Auréa Skin, kulitku jauh lebih glowing.”
+      <p class="text-gray-600 italic mb-4">
+        “Aku baru mulai pakai skincare, dan Auréa Skin cocok banget.
+        Nggak bikin perih dan kulit jadi lebih bersih.”
       </p>
-      <h4 class="font-semibold">— Rina, Bandung</h4>
+      <h4 class="font-semibold text-primary">— Nabila, 17 tahun</h4>
     </div>
 
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
-      <p class="italic mb-4">
-        “Teksturnya ringan dan cocok buat kulit sensitif.”
+      <p class="text-gray-600 italic mb-4">
+        “Teksturnya ringan dan nggak lengket.
+        Cocok buat dipakai sebelum sekolah.”
       </p>
-      <h4 class="font-semibold">— Aisyah, Jakarta</h4>
+      <h4 class="font-semibold text-primary">— Rizky, 18 tahun</h4>
     </div>
 
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
-      <p class="italic mb-4">
-        “Brand lokal rasa premium. Love it!”
+      <p class="text-gray-600 italic mb-4">
+        “Kulit aku jadi lebih lembap dan nggak kusam.
+        Harganya juga masih ramah di kantong.”
       </p>
-      <h4 class="font-semibold">— Nabila, Surabaya</h4>
+      <h4 class="font-semibold text-primary">— Aisyah, 19 tahun</h4>
     </div>
+
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="px-6 md:px-12 py-24 bg-primary text-white text-center">
+
+<!-- ================= CONTACT (TETAP) ================= -->
+<section id="contact" class="px-6 md:px-12 py-28 bg-primary text-white text-center">
   <h2 class="text-4xl md:text-5xl font-bold mb-6">
-    Konsultasi Gratis 💬
+    Konsultasi Skincare Gratis 💬
   </h2>
-  <p class="text-lg mb-10 max-w-2xl mx-auto">
-    Tim Auréa Skin siap membantu kamu memilih
-    produk skincare terbaik melalui WhatsApp.
+
+  <p class="text-lg max-w-3xl mx-auto mb-12 opacity-95">
+    Masih bingung memilih produk yang cocok untuk kulitmu?
+    Tim <strong>Auréa Skin</strong> siap membantu dengan
+    konsultasi <span class="font-semibold">GRATIS</span> dan ramah.
   </p>
 
-  <a href="https://wa.me/6281311394644" target="_blank"
-     class="bg-white text-primary px-12 py-4 rounded-button text-lg font-semibold hover:bg-gray-100 transition inline-flex items-center gap-3">
-    <i class="ri-whatsapp-line text-2xl"></i>
-    Chat WhatsApp
-  </a>
+  <!-- BUTTON WRAPPER -->
+  <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
 
-  <p class="mt-6 text-sm opacity-90">
-    Admin Online | 08.00 – 21.00 WIB
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/6281311394644" target="_blank"
+       class="bg-white text-primary px-12 py-4 rounded-button
+              text-lg font-semibold hover:bg-gray-100 transition
+              inline-flex items-center gap-3 shadow-md">
+      <i class="ri-whatsapp-line text-2xl"></i>
+      Chat WhatsApp
+    </a>
+
+    <!-- EMAIL -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aureaskin.shop@gmail.com"
+   target="_blank"
+   class="bg-white/90 text-primary px-12 py-4 rounded-button
+          text-lg font-semibold hover:bg-white transition
+          inline-flex items-center gap-3 shadow-md">
+  <i class="ri-mail-line text-2xl"></i>
+  Kirim Email
+</a>
+  </div>
+  <!-- INFO JAM -->
+  <div class="max-w-xs mx-auto bg-white/15 p-5 rounded-2xl backdrop-blur-sm">
+  <div class="flex items-center justify-center gap-2 mb-2">
+    <i class="ri-customer-service-2-line text-2xl"></i>
+    <h4 class="font-semibold">Customer Service</h4>
+  </div>
+  <p class="text-sm opacity-90">
+    Admin Online<br>
+    <strong>08.00 – 21.00 WIB</strong>
   </p>
+</div>
 </section>
 
+<!-- ================= FINAL CTA ================= -->
+<section class="px-6 md:px-12 py-28 bg-primary/10 text-center">
+  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+    Saatnya Mulai Merawat Kulitmu ✨
+  </h2>
+
+  <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+    Jangan tunda lagi untuk memiliki kulit yang bersih,
+    sehat, dan percaya diri.
+    Mulailah perjalanan skincare-mu bersama
+    <strong class="text-primary">Auréa Skin</strong> hari ini.
+  </p>
+
+  <!-- ALAMAT TOKO -->
+  <p class="text-gray-600 mb-10">
+    📍 <strong>Auréa Skin Official Store</strong><br>
+    Jl. Mawar No. 15, Bandung<br>
+    Buka setiap hari 08.00 – 21.00 WIB
+  </p>
+</section>
 <!-- ================= FOOTER ================= -->
-<footer id="contact" class="bg-gray-900 text-gray-300 px-6 md:px-12 py-12">
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<footer class="bg-gray-900 text-gray-300">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 py-16 grid md:grid-cols-3 gap-12">
+
+    <!-- BRAND -->
     <div>
-      <h3 class="font-['Pacifico'] text-3xl text-primary mb-4">Auréa Skin</h3>
-      <p>Rahasia kulit sehat dan bercahaya.</p>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-3">Kontak</h4>
-      <p>Email: aureaskin.shop@gmail.com</p>
-      <p>Telp: +62 812-3456-7890</p>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-3">Sosial Media</h4>
-      <div class="flex gap-4 text-xl">
-        <i class="ri-instagram-line"></i>
-        <i class="ri-facebook-line"></i>
-        <i class="ri-twitter-line"></i>
+      <h3 class="font-['Pacifico'] text-3xl text-primary mb-4">
+        Auréa Skin
+      </h3>
+      <p class="text-sm leading-relaxed mb-5">
+        Skincare lokal untuk generasi muda.
+        Aman, nyaman, dan cocok untuk pemula.
+      </p>
+
+      <!-- SOCIAL ICON -->
+      <div class="flex gap-4">
+        <a href="https://wa.me/6281311394644" target="_blank"
+           class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary transition">
+          <i class="ri-whatsapp-line text-lg text-primary hover:text-white"></i>
+        </a>
+
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aureaskin.shop@gmail.com"
+           class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary transition">
+          <i class="ri-mail-line text-lg text-primary hover:text-white"></i>
+        </a>
       </div>
     </div>
+
+    <!-- MENU -->
+    <div>
+      <h4 class="font-semibold text-white mb-4">Menu</h4>
+      <ul class="space-y-3 text-sm">
+        <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+        <li><a href="#benefit" class="hover:text-primary transition">Benefit</a></li>
+        <li><a href="#market" class="hover:text-primary transition">Target Market</a></li>
+        <li><a href="#produk" class="hover:text-primary transition">Produk</a></li>
+      </ul>
+    </div>
+
+    <!-- KONTAK -->
+    <div>
+      <h4 class="font-semibold text-white mb-4">Kontak</h4>
+      <ul class="space-y-3 text-sm">
+        <li class="flex items-center gap-3">
+          <i class="ri-map-pin-line text-primary"></i>
+          Bandung, Jawa Barat
+        </li>
+        <li class="flex items-center gap-3">
+          <i class="ri-whatsapp-line text-primary"></i>
+          <a href="https://wa.me/6281311394644" target="_blank"
+             class="hover:text-primary transition">
+            +62 813-1139-4644
+          </a>
+        </li>
+        <li class="flex items-center gap-3">
+        <i class="ri-mail-line text-primary"></i>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aureaskin.shop@gmail.com"
+            target="_blank"
+            class="hover:text-primary transition break-all">
+            aureaskin.shop@gmail.com
+        </a>
+        </li>
+      </ul>
+    </div>
+
   </div>
 
-  <p class="text-center text-sm text-gray-500 mt-10">
-    © 2025 Auréa Skin. All Rights Reserved.
-  </p>
+  <!-- COPYRIGHT -->
+  <div class="border-t border-gray-700 py-5 text-center text-sm text-gray-400">
+    © 2024 <span class="text-primary font-semibold">Auréa Skin</span>.
+    All Rights Reserved.
+  </div>
 </footer>
 
+<!-- ================= MODAL DETAIL PRODUK ================= -->
+<div id="modal" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50">
+  <div class="bg-white rounded-2xl p-6 max-w-md w-full relative animate-fadeIn">
+
+    <!-- TOMBOL CLOSE -->
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+
+    <!-- GAMBAR -->
+    <img id="modalImg" src="" class="h-48 mx-auto object-contain mb-4">
+
+    <!-- NAMA PRODUK -->
+    <h3 id="modalName" class="text-2xl font-semibold text-center mb-2"></h3>
+
+    <!-- HARGA -->
+    <p id="modalPrice" class="text-primary font-semibold text-center mb-3"></p>
+
+    <!-- DESKRIPSI -->
+    <p id="modalDesc" class="text-gray-600 text-center text-sm mb-6"></p>
+  </div>
+</div>
+<script>
+const modal = document.getElementById("modal");
+const modalName = document.getElementById("modalName");
+const modalPrice = document.getElementById("modalPrice");
+const modalDesc = document.getElementById("modalDesc");
+const modalImg = document.getElementById("modalImg");
+
+function openDetail(name, price, desc, img){
+  modalName.innerText = name;
+  modalPrice.innerText = price;
+  modalDesc.innerText = desc;
+  modalImg.src = img;
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+function closeModal(){
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+</script>
 </body>
 </html>
