@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auréa Skin</title>
-
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>
 tailwind.config = {
@@ -21,21 +20,17 @@ tailwind.config = {
   }
 }
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-
 <style>
 html { scroll-behavior: smooth; }
-
 .nav-link {
   position: relative;
   font-weight: 500;
   transition: color .3s;
 }
-
 .nav-link::after {
   content: '';
   position: absolute;
@@ -47,38 +42,72 @@ html { scroll-behavior: smooth; }
   transform: translateX(-50%);
   transition: width .3s;
 }
-
 .nav-link:hover {
   color: #E8A0BF;
 }
-
 .nav-link:hover::after {
   width: 100%;
 }
-
 .nav-link.active {
   color: #E8A0BF;
 }
-
 .nav-link.active::after {
   width: 100%;
 }
+.hover-box {
+  transition: all 0.35s ease;
+}
+.hover-box:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.12);
+}
+.hover-box i {
+  transition: transform 0.35s ease;
+}
+.hover-box:hover i {
+  transform: scale(1.15);
+}
+.btn-detail {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #E8A0BF;
+  border: 1.5px solid #E8A0BF;
+  transition: all 0.3s ease;
+}
+.btn-detail:hover {
+  background-color: #E8A0BF;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(232,160,191,0.4);
+}
+.btn-detail:active {
+  transform: scale(0.96);
+}
 </style>
 </head>
-
 <body class="bg-white text-gray-800 font-['Poppins']">
-
-<!-- ================= HEADER ================= -->
 <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-6 md:px-12 py-4
               flex items-center justify-between relative">
-
-    <!-- LOGO (KIRI) -->
     <a href="#home" class="text-3xl font-['Pacifico'] text-primary">
       Auréa Skin
     </a>
-
-    <!-- NAVIGASI (TENGAH) -->
+    <button id="menuBtn" class="md:hidden text-2xl text-primary">
+  <i class="ri-menu-3-line"></i>
+</button>
+    <div id="mobileMenu" class="hidden bg-white border-b md:hidden">
+    <nav class="flex flex-col items-center gap-4 py-6">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#benefit" class="nav-link">Benefit</a>
+        <a href="#about" class="nav-link">Tentang</a>
+        <a href="#market" class="nav-link">Target Market</a>
+        <a href="#produk" class="nav-link">Produk</a>
+    </nav>
+    </div>
     <nav class="hidden md:flex space-x-10 absolute left-1/2 transform -translate-x-1/2">
       <a href="#home" class="nav-link">Home</a>
       <a href="#benefit" class="nav-link">Benefit</a>
@@ -86,23 +115,17 @@ html { scroll-behavior: smooth; }
       <a href="#market" class="nav-link">Target Market</a>
       <a href="#produk" class="nav-link">Produk</a>
     </nav>
-
-    <!-- CTA KANAN -->
     <a href="#contact"
        class="hidden md:inline-block bg-primary text-white px-6 py-2 rounded-button
               hover:bg-secondary transition shadow-sm">
       Konsultasi
     </a>
-
   </div>
 </header>
 
-
-
-<!-- ================= BENEFIT (TETAP) ================= -->
 <section id="home" class="bg-primary/10 px-6 md:px-12 py-24 flex flex-col md:flex-row items-center">
   <div class="md:w-1/2 mb-12">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+   <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
       Kulit Sehat & <span class="text-primary">Glowing</span><br>
       Bersama Auréa Skin
     </h1>
@@ -112,27 +135,22 @@ html { scroll-behavior: smooth; }
       kepercayaan diri generasi muda.
     </p>
   </div>
-
   <div class="md:w-1/2">
-    <img src="images/gambarbrand.png" class="rounded-3xl shadow-xl">
+    <img src="images/gambarbrand.png" class="h-48 mx-auto object-contain mb-4 max-w-full h-auto">
   </div>
 </section>
 
-
-<!-- ================= MENGAPA PILIH ================= -->
 <section id="benefit" class="px-6 md:px-12 py-24 bg-gray-50">
   <h2 class="text-4xl font-bold text-center mb-6">
     Mengapa Pilih <span class="text-primary">Auréa Skin?</span>
   </h2>
-
   <p class="text-center text-gray-600 max-w-3xl mx-auto mb-14 text-lg">
     Kami percaya bahwa setiap orang berhak memiliki kulit sehat tanpa rasa khawatir.
     Oleh karena itu, Auréa Skin hadir dengan komitmen kuat terhadap kualitas,
     keamanan, dan kenyamanan penggunaan.
   </p>
-
   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
-    <div class="bg-white p-8 rounded-2xl shadow">
+    <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-shield-check-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Aman & Terdaftar BPOM</h4>
       <p class="text-sm text-gray-600">
@@ -140,8 +158,7 @@ html { scroll-behavior: smooth; }
         dan terdaftar resmi di BPOM.
       </p>
     </div>
-
-    <div class="bg-white p-8 rounded-2xl shadow">
+   <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-leaf-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Bahan Alami Berkualitas</h4>
       <p class="text-sm text-gray-600">
@@ -149,8 +166,7 @@ html { scroll-behavior: smooth; }
         yang lembut untuk kulit Indonesia.
       </p>
     </div>
-
-    <div class="bg-white p-8 rounded-2xl shadow">
+   <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-star-smile-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Hasil Nyata</h4>
       <p class="text-sm text-gray-600">
@@ -158,8 +174,7 @@ html { scroll-behavior: smooth; }
         dengan pemakaian rutin.
       </p>
     </div>
-
-    <div class="bg-white p-8 rounded-2xl shadow">
+    <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-customer-service-2-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Didampingi Ahli</h4>
       <p class="text-sm text-gray-600">
@@ -170,18 +185,15 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
-<!-- ================= TENTANG BRAND ================= -->
 <section id="about" class="px-6 md:px-12 py-24 bg-white">
   <h2 class="text-4xl font-bold text-center mb-6">
     Tentang <span class="text-primary">Auréa Skin</span>
   </h2>
-
   <p class="max-w-4xl mx-auto text-center text-lg text-gray-600 mb-10">
     Auréa Skin didirikan pada tahun 2024 dengan tujuan
     membantu lebih banyak orang merasa percaya diri melalui
     perawatan kulit yang tepat, aman, dan nyaman digunakan.
   </p>
-
   <p class="max-w-4xl mx-auto text-center text-lg text-gray-600">
     Nama Auréa terinspirasi dari kata <em>aureus</em>
     yang berarti emas melambangkan nilai,
@@ -190,7 +202,7 @@ html { scroll-behavior: smooth; }
     tetapi juga tentang rasa percaya diri dan self-care.
   </p>
 </section>
-<!-- ================= TARGET MARKET ================= -->
+
 <section id="market" class="px-6 md:px-12 py-24 bg-gray-50">
   <h2 class="text-4xl font-bold text-center mb-12">
     Auréa Skin Cocok Untuk Kamu ✨
@@ -202,9 +214,7 @@ html { scroll-behavior: smooth; }
   </p>
 
   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
-
-    <!-- CARD 1 -->
-    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+    <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-user-smile-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Remaja & Dewasa Awal</h4>
       <p class="text-sm text-gray-600">
@@ -212,8 +222,7 @@ html { scroll-behavior: smooth; }
       </p>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+   <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-sparkling-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Ingin Kulit Bersih & Segar</h4>
       <p class="text-sm text-gray-600">
@@ -221,8 +230,7 @@ html { scroll-behavior: smooth; }
       </p>
     </div>
 
-    <!-- CARD 3 (FIXED – SEKARANG ADA ICON) -->
-    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+    <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-layout-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Suka yang Simple</h4>
       <p class="text-sm text-gray-600">
@@ -230,28 +238,23 @@ html { scroll-behavior: smooth; }
       </p>
     </div>
 
-    <!-- CARD 4 -->
-    <div class="bg-white p-8 rounded-2xl shadow hover:shadow-lg transition">
+    <div class="bg-white p-8 rounded-2xl shadow hover-box">
       <i class="ri-heart-3-line text-4xl text-primary mb-4"></i>
       <h4 class="font-semibold mb-2">Butuh Produk Aman</h4>
       <p class="text-sm text-gray-600">
         Ringan & nyaman untuk pemula.
       </p>
     </div>
-
   </div>
 </section>
 
-<!-- ================= PRODUK (BARU) ================= -->
 <section id="produk" class="px-6 md:px-12 py-24 bg-gray-50">
   <h2 class="text-4xl font-bold text-center mb-14">
     Produk <span class="text-primary">Auréa Skin</span>
   </h2>
-
   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-
     <div class="bg-white p-6 rounded-2xl shadow text-center">
-      <img src="images/produk1.png" class="h-48 mx-auto object-contain mb-4">
+      <img src="images/produk1.png" class="h-48 mx-auto object-contain mb-4 max-w-full h-auto">
       <h4 class="font-semibold">Facial Cleanser Glow</h4>
       <p class="text-sm text-gray-500 mb-2">Membersihkan & mencerahkan</p>
       <button onclick="openDetail(
@@ -259,13 +262,12 @@ html { scroll-behavior: smooth; }
         'Rp 60.000',
         'Facial Cleanser Glow dari Auréa Skin diformulasikan untuk membersihkan wajah secara menyeluruh tanpa membuat kulit terasa kering. Teksturnya lembut dan busanya halus, efektif mengangkat kotoran, minyak berlebih, serta sisa makeup.',
         'images/produk1.png'
-      )" class="text-primary font-medium">
+     )" class="btn-detail">
         Lihat Detail
       </button>
     </div>
-
     <div class="bg-white p-6 rounded-2xl shadow text-center">
-      <img src="images/produk2.png" class="h-48 mx-auto object-contain mb-4">
+      <img src="images/produk2.png" class="h-48 mx-auto object-contain mb-4 max-w-full h-auto">
       <h4 class="font-semibold">Hydrating Toner</h4>
       <p class="text-sm text-gray-500 mb-2">Melembapkan & menenangkan</p>
       <button onclick="openDetail(
@@ -273,47 +275,44 @@ html { scroll-behavior: smooth; }
         'Rp 85.000',
         'Hydrating Toner membantu mengembalikan kelembapan kulit setelah mencuci wajah sekaligus menenangkan kulit yang terasa kering atau lelah. Teksturnya ringan, cepat meresap, dan tidak lengket.',
         'images/produk2.png'
-      )" class="text-primary font-medium">
+      )" class="btn-detail">
         Lihat Detail
       </button>
     </div>
-
     <div class="bg-white p-6 rounded-2xl shadow text-center">
-      <img src="images/produk3.png" class="h-48 mx-auto object-contain mb-4">
+      <img src="images/produk3.png" class="h-48 mx-auto object-contain mb-4 max-w-full h-auto">
       <h4 class="font-semibold">Brightening Serum</h4>
-      <p class="text-sm text-gray-500 mb-2">Mencerahkan kulit</p>
+      <p class="text-sm text-gray-500 mb-2">Mencerahkan maksimal 
+        pada wajah</p>
       <button onclick="openDetail(
         'Brightening Serum',
         'Rp 102.000',
         'Brightening Serum diformulasikan dengan bahan aktif yang membantu mencerahkan kulit dan meratakan warna kulit. Teksturnya ringan dan mudah menyerap, memberikan hasil kulit tampak lebih glowing dan sehat.',
         'images/produk3.png'
-      )" class="text-primary font-medium">
+     )" class="btn-detail">
         Lihat Detail
       </button>
     </div>
-
     <div class="bg-white p-6 rounded-2xl shadow text-center">
-      <img src="images/produk4.png" class="h-48 mx-auto object-contain mb-4">
+      <img src="images/produk4.png" class="h-48 mx-auto object-contain mb-4 max-w-full h-auto">
       <h4 class="font-semibold">Moisturizer Cream</h4>
-      <p class="text-sm text-gray-500 mb-2">Melembapkan maksimal</p>
+      <p class="text-sm text-gray-500 mb-2">Melembapkan maksimal pada wajah</p>
       <button onclick="openDetail(
         'Moisturizer Cream',
         'Rp 150.000',
         'Moisturizer Glow memberikan kelembapan intens yang tahan lama sekaligus menjaga skin barrier. Teksturnya lembut, mudah diratakan, dan nyaman digunakan siang maupun malam hari.',
         'images/produk4.png'
-      )" class="text-primary font-medium">
+      )" class="btn-detail">
         Lihat Detail
       </button>
     </div>
-
   </div>
 </section>
-<!-- ================= TESTIMONI ================= -->
+
 <section class="px-6 md:px-12 py-24 bg-white">
   <h2 class="text-4xl font-bold text-center mb-12">
     Apa Kata Mereka tentang <span class="text-primary">Auréa Skin</span>?
   </h2>
-
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
@@ -323,7 +322,6 @@ html { scroll-behavior: smooth; }
       </p>
       <h4 class="font-semibold text-primary">— Nabila, 17 tahun</h4>
     </div>
-
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
       <p class="text-gray-600 italic mb-4">
         “Teksturnya ringan dan nggak lengket.
@@ -331,7 +329,6 @@ html { scroll-behavior: smooth; }
       </p>
       <h4 class="font-semibold text-primary">— Rizky, 18 tahun</h4>
     </div>
-
     <div class="bg-gray-50 p-8 rounded-2xl shadow">
       <p class="text-gray-600 italic mb-4">
         “Kulit aku jadi lebih lembap dan nggak kusam.
@@ -339,12 +336,9 @@ html { scroll-behavior: smooth; }
       </p>
       <h4 class="font-semibold text-primary">— Aisyah, 19 tahun</h4>
     </div>
-
   </div>
 </section>
 
-
-<!-- ================= CONTACT (TETAP) ================= -->
 <section id="contact" class="px-6 md:px-12 py-28 bg-primary text-white text-center">
   <h2 class="text-4xl md:text-5xl font-bold mb-6">
     Konsultasi Skincare Gratis 💬
@@ -356,10 +350,7 @@ html { scroll-behavior: smooth; }
     konsultasi <span class="font-semibold">GRATIS</span> dan ramah.
   </p>
 
-  <!-- BUTTON WRAPPER -->
   <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-10">
-
-    <!-- WHATSAPP -->
     <a href="https://wa.me/6281311394644" target="_blank"
        class="bg-white text-primary px-12 py-4 rounded-button
               text-lg font-semibold hover:bg-gray-100 transition
@@ -367,18 +358,16 @@ html { scroll-behavior: smooth; }
       <i class="ri-whatsapp-line text-2xl"></i>
       Chat WhatsApp
     </a>
-
-    <!-- EMAIL -->
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aureaskin.shop@gmail.com"
    target="_blank"
-   class="bg-white/90 text-primary px-12 py-4 rounded-button
-          text-lg font-semibold hover:bg-white transition
-          inline-flex items-center gap-3 shadow-md">
-  <i class="ri-mail-line text-2xl"></i>
-  Kirim Email
-</a>
+    class="bg-white/90 text-primary px-12 py-4 rounded-button
+            text-lg font-semibold hover:bg-white transition
+            inline-flex items-center gap-3 shadow-md">
+    <i class="ri-mail-line text-2xl"></i>
+    Kirim Email
+    </a>
   </div>
-  <!-- INFO JAM -->
+ 
   <div class="max-w-xs mx-auto bg-white/15 p-5 rounded-2xl backdrop-blur-sm">
   <div class="flex items-center justify-center gap-2 mb-2">
     <i class="ri-customer-service-2-line text-2xl"></i>
@@ -391,7 +380,6 @@ html { scroll-behavior: smooth; }
 </div>
 </section>
 
-<!-- ================= FINAL CTA ================= -->
 <section class="px-6 md:px-12 py-28 bg-primary/10 text-center">
   <h2 class="text-4xl md:text-5xl font-bold mb-6">
     Saatnya Mulai Merawat Kulitmu ✨
@@ -404,18 +392,15 @@ html { scroll-behavior: smooth; }
     <strong class="text-primary">Auréa Skin</strong> hari ini.
   </p>
 
-  <!-- ALAMAT TOKO -->
   <p class="text-gray-600 mb-10">
     📍 <strong>Auréa Skin Official Store</strong><br>
     Jl. Mawar No. 15, Bandung<br>
     Buka setiap hari 08.00 – 21.00 WIB
   </p>
 </section>
-<!-- ================= FOOTER ================= -->
+
 <footer class="bg-gray-900 text-gray-300">
   <div class="max-w-7xl mx-auto px-6 md:px-12 py-16 grid md:grid-cols-3 gap-12">
-
-    <!-- BRAND -->
     <div>
       <h3 class="font-['Pacifico'] text-3xl text-primary mb-4">
         Auréa Skin
@@ -425,7 +410,6 @@ html { scroll-behavior: smooth; }
         Aman, nyaman, dan cocok untuk pemula.
       </p>
 
-      <!-- SOCIAL ICON -->
       <div class="flex gap-4">
         <a href="https://wa.me/6281311394644" target="_blank"
            class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20 hover:bg-primary transition">
@@ -439,7 +423,6 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
 
-    <!-- MENU -->
     <div>
       <h4 class="font-semibold text-white mb-4">Menu</h4>
       <ul class="space-y-3 text-sm">
@@ -449,8 +432,6 @@ html { scroll-behavior: smooth; }
         <li><a href="#produk" class="hover:text-primary transition">Produk</a></li>
       </ul>
     </div>
-
-    <!-- KONTAK -->
     <div>
       <h4 class="font-semibold text-white mb-4">Kontak</h4>
       <ul class="space-y-3 text-sm">
@@ -475,36 +456,31 @@ html { scroll-behavior: smooth; }
         </li>
       </ul>
     </div>
-
   </div>
-
-  <!-- COPYRIGHT -->
   <div class="border-t border-gray-700 py-5 text-center text-sm text-gray-400">
     © 2024 <span class="text-primary font-semibold">Auréa Skin</span>.
     All Rights Reserved.
   </div>
 </footer>
 
-<!-- ================= MODAL DETAIL PRODUK ================= -->
 <div id="modal" class="hidden fixed inset-0 bg-black/50 items-center justify-center z-50">
-  <div class="bg-white rounded-2xl p-6 max-w-md w-full relative animate-fadeIn">
-
-    <!-- TOMBOL CLOSE -->
+  <div class="bg-white rounded-2xl p-4 w-[88%] sm:w-full sm:max-w-sm max-h-[80vh] overflow-y-auto relative animate-fadeIn">
     <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
       <i class="ri-close-line text-2xl"></i>
     </button>
 
-    <!-- GAMBAR -->
-    <img id="modalImg" src="" class="h-48 mx-auto object-contain mb-4">
+   <img id="modalImg"
+     src=""
+     class="h-56 sm:h-64 mx-auto object-contain mb-4 max-w-full">
 
-    <!-- NAMA PRODUK -->
-    <h3 id="modalName" class="text-2xl font-semibold text-center mb-2"></h3>
+    <h3 id="modalName"
+    class="text-lg sm:text-xl font-semibold text-center mb-1"></h3>
 
-    <!-- HARGA -->
-    <p id="modalPrice" class="text-primary font-semibold text-center mb-3"></p>
+    <p id="modalPrice"
+   class="text-primary font-semibold text-center mb-2 text-base"></p>
 
-    <!-- DESKRIPSI -->
-    <p id="modalDesc" class="text-gray-600 text-center text-sm mb-6"></p>
+    <p id="modalDesc"
+   class="text-gray-600 text-center text-sm leading-relaxed mb-4"></p>
   </div>
 </div>
 <script>
@@ -528,6 +504,12 @@ function closeModal(){
   modal.classList.add("hidden");
   modal.classList.remove("flex");
 }
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
 </script>
 </body>
 </html>
