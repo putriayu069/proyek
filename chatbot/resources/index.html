@@ -258,6 +258,7 @@ html { scroll-behavior: smooth; }
       <h4 class="font-semibold">Facial Cleanser Glow</h4>
       <p class="text-sm text-gray-500 mb-2">Membersihkan & mencerahkan</p>
       <button onclick="openDetail(
+        this,
         'Facial Cleanser Glow',
         'Rp 60.000',
         'Facial Cleanser Glow dari Auréa Skin diformulasikan untuk membersihkan wajah secara menyeluruh tanpa membuat kulit terasa kering. Teksturnya lembut dan busanya halus, efektif mengangkat kotoran, minyak berlebih, serta sisa makeup.',
@@ -271,6 +272,7 @@ html { scroll-behavior: smooth; }
       <h4 class="font-semibold">Hydrating Toner</h4>
       <p class="text-sm text-gray-500 mb-2">Melembapkan & menenangkan</p>
       <button onclick="openDetail(
+         this,
         'Hydrating Toner',
         'Rp 85.000',
         'Hydrating Toner membantu mengembalikan kelembapan kulit setelah mencuci wajah sekaligus menenangkan kulit yang terasa kering atau lelah. Teksturnya ringan, cepat meresap, dan tidak lengket.',
@@ -285,6 +287,7 @@ html { scroll-behavior: smooth; }
       <p class="text-sm text-gray-500 mb-2">Mencerahkan maksimal 
         pada wajah</p>
       <button onclick="openDetail(
+         this,
         'Brightening Serum',
         'Rp 102.000',
         'Brightening Serum diformulasikan dengan bahan aktif yang membantu mencerahkan kulit dan meratakan warna kulit. Teksturnya ringan dan mudah menyerap, memberikan hasil kulit tampak lebih glowing dan sehat.',
@@ -298,6 +301,7 @@ html { scroll-behavior: smooth; }
       <h4 class="font-semibold">Moisturizer Cream</h4>
       <p class="text-sm text-gray-500 mb-2">Melembapkan maksimal pada wajah</p>
       <button onclick="openDetail(
+         this,
         'Moisturizer Cream',
         'Rp 150.000',
         'Moisturizer Glow memberikan kelembapan intens yang tahan lama sekaligus menjaga skin barrier. Teksturnya lembut, mudah diratakan, dan nyaman digunakan siang maupun malam hari.',
@@ -490,21 +494,27 @@ const modalPrice = document.getElementById("modalPrice");
 const modalDesc = document.getElementById("modalDesc");
 const modalImg = document.getElementById("modalImg");
 
-function openDetail(name, price, desc) {
+function openDetail(button, name, price, desc) {
   modalName.innerText = name;
   modalPrice.innerText = price;
   modalDesc.innerText = desc;
 
-  // ambil gambar dari card
-  const img = event.target
-    .closest('.bg-white')
-    .querySelector('img').src;
-
-  modalImg.src = img;
+  const card = button.closest('.bg-white');
+  const imgSrc = card.querySelector('img').src;
+  modalImg.src = imgSrc;
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
 }
+function closeModal() {
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
