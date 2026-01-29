@@ -261,7 +261,7 @@ html { scroll-behavior: smooth; }
         'Facial Cleanser Glow',
         'Rp 60.000',
         'Facial Cleanser Glow dari Auréa Skin diformulasikan untuk membersihkan wajah secara menyeluruh tanpa membuat kulit terasa kering. Teksturnya lembut dan busanya halus, efektif mengangkat kotoran, minyak berlebih, serta sisa makeup.',
-        '/images/produk1.png'
+        '/resources/images/produk1.png'
      )" class="btn-detail">
         Lihat Detail
       </button>
@@ -274,7 +274,7 @@ html { scroll-behavior: smooth; }
         'Hydrating Toner',
         'Rp 85.000',
         'Hydrating Toner membantu mengembalikan kelembapan kulit setelah mencuci wajah sekaligus menenangkan kulit yang terasa kering atau lelah. Teksturnya ringan, cepat meresap, dan tidak lengket.',
-       '/images/produk2.png'
+       '/resources/images/produk2.png'
       )" class="btn-detail">
         Lihat Detail
       </button>
@@ -288,7 +288,7 @@ html { scroll-behavior: smooth; }
         'Brightening Serum',
         'Rp 102.000',
         'Brightening Serum diformulasikan dengan bahan aktif yang membantu mencerahkan kulit dan meratakan warna kulit. Teksturnya ringan dan mudah menyerap, memberikan hasil kulit tampak lebih glowing dan sehat.',
-        '/images/produk3.png'
+        '/resources/images/produk3.png'
      )" class="btn-detail">
         Lihat Detail
       </button>
@@ -301,7 +301,7 @@ html { scroll-behavior: smooth; }
         'Moisturizer Cream',
         'Rp 150.000',
         'Moisturizer Glow memberikan kelembapan intens yang tahan lama sekaligus menjaga skin barrier. Teksturnya lembut, mudah diratakan, dan nyaman digunakan siang maupun malam hari.',
-        '/images/produk4.png'
+        '/resources/images/produk4.png'
       )" class="btn-detail">
         Lihat Detail
       </button>
@@ -490,19 +490,20 @@ const modalPrice = document.getElementById("modalPrice");
 const modalDesc = document.getElementById("modalDesc");
 const modalImg = document.getElementById("modalImg");
 
-function openDetail(name, price, desc, img){
+function openDetail(name, price, desc) {
   modalName.innerText = name;
   modalPrice.innerText = price;
   modalDesc.innerText = desc;
+
+  // ambil gambar dari card
+  const img = event.target
+    .closest('.bg-white')
+    .querySelector('img').src;
+
   modalImg.src = img;
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
-}
-
-function closeModal(){
-  modal.classList.add("hidden");
-  modal.classList.remove("flex");
 }
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
